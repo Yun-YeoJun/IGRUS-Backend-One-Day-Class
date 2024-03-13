@@ -10,10 +10,7 @@ app = Flask(__name__)
 def home():
     db = Database()
     rows = db.execute_sql('select * from task;')
-    all_task_list = []
-    for row in rows:
-        all_task_list.append(row)
-    return render_template('home.html', all_task_list=all_task_list)
+    return render_template('home.html', all_task_list=rows)
 
 
 @app.route('/task/create', methods=['post'])
